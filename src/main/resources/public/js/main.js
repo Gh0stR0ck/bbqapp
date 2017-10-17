@@ -4,8 +4,14 @@ $( document ).ready(function() {
     setTimeout(
       function()
       {
-
+        $("#loadimage").show();
       }, 2000);
+
+      setTimeout(
+            function()
+            {
+$("#loadimage").hide();
+            }, 5000);
 });
 
 $("#addroomform").submit(function(e){
