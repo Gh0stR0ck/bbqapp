@@ -17,8 +17,7 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(long id, String name, Boolean watched) {
-        this.id = id;
+    public Movie(String name, Boolean watched) {
         this.name = name;
         this.watched = watched;
     }
