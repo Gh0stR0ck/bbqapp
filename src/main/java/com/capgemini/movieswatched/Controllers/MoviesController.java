@@ -23,9 +23,9 @@ public class MoviesController {
     /*
     * Get one movie from the repository
      */
-    @RequestMapping(value = "/{roomNumber}/", method = RequestMethod.GET)
-    public Movie get(@PathVariable long roomNumber){
-        return repository.findOne(roomNumber);
+    @RequestMapping(value = "/{movieId}/", method = RequestMethod.GET)
+    public Movie get(@PathVariable long movieId){
+        return repository.findOne(movieId);
     }
 
     /*
@@ -51,10 +51,31 @@ public class MoviesController {
     /*
     * Remove a movie from the repository
      */
-    @RequestMapping(value = "/{roomNumber}/", method = RequestMethod.DELETE)
-    public Boolean delete(@PathVariable long roomNumber){
-        repository.delete(roomNumber);
+    @RequestMapping(value = "/{movieId}/", method = RequestMethod.DELETE)
+    public Boolean delete(@PathVariable long movieId){
+        repository.delete(movieId);
         return true;
     }
 
+    /*
+    * Set movie as watched
+     */
+    @RequestMapping(value = "/watched/{movieId}/", method = RequestMethod.PUT)
+    public Movie movieWatched(@PathVariable long movieId){
+        Movie localMovie = repository.findById(movieId);
+        localMovie.setWatched(true);
+        repository.save(localMovie);
+        return localMovie;
+    }
+
+    /*
+    * Set movie as not watched
+    */
+    @RequestMapping(value = "/unwatched/{movieId}/", method = RequestMethod.PUT)
+    public Movie movieUnwatched(@PathVariable long movieId){
+        Movie localMovie = repository.findById(movieId);
+        localMovie.setWatched(false);
+        repository.save(localMovie);
+        return localMovie;
+    }
 }
