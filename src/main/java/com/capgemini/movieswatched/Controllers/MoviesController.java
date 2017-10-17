@@ -51,7 +51,7 @@ public class MoviesController {
     /*
     * Remove a movie from the repository
      */
-    @RequestMapping(value = "/{roomNumber}/", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{movieId}/", method = RequestMethod.DELETE)
     public Boolean delete(@PathVariable long movieId){
         repository.delete(movieId);
         return true;

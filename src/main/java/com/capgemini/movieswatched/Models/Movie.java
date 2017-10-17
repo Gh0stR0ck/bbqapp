@@ -1,9 +1,12 @@
 package com.capgemini.movieswatched.Models;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.Valid;
 
 @Entity
 public class Movie {
@@ -11,8 +14,10 @@ public class Movie {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
+    @Valid
+    @Length(max = 255, min = 1)
     private String name;
-    private Boolean watched;
+    private Boolean watched = false;
 
     public Movie() {
     }
